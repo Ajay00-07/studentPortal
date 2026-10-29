@@ -20,12 +20,14 @@ pipeline{
         }
 
         stage('Docker Login'){
-            withCredentials([usernamePassword(
+            steps{
+                withCredentials([usernamePassword(
                 credentialId: 'Dockerhub',
                 usernameVariable: 'DOCKER_USER',
                 passwordVariable: 'DOCKER_PASSWORD'
-            )]){
-                bat 'echo %DOCKER_PASSWORD%| docker login -u %DOCKER_USER% --password-stdin'
+                )]){
+                    bat 'echo %DOCKER_PASSWORD%| docker login -u %DOCKER_USER% --password-stdin'
+                }
             }
         }
 
@@ -36,7 +38,7 @@ pipeline{
         }
     }
 
-    port{
+    post{
         success{
             echo 'Build Successfull..'
         }
