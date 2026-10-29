@@ -2,7 +2,7 @@ pipeline{
     agent any
 
     environment{
-        DOCKER_IMAGE: 'ajaykumar2602/student-portal'
+        DOCKER_IMAGE: 'ajaykumar2602/studentportal'
         DOCKER_TAG: 'v2'
     }
 
